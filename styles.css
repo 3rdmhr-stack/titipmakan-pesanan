@@ -1,0 +1,366 @@
+/* ==========================================================
+   Custom property: nilai desain terpusat
+   ========================================================== */
+:root {
+  --aksen: #0066cc;
+  --aksen-gelap: #004a99;
+  --sukses: #15803d;
+  --latar: #f7f9fc;
+  --permukaan: #ffffff;
+  --teks: #1a1a1a;
+  --teks-lembut: #555;
+  --galat: #b91c1c;
+  --batas: #d6dbe3;
+
+  --radius: 12px;
+  --ruang-kecil: 8px;
+  --ruang: 16px;
+  --ruang-besar: 24px;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  margin: 0;
+  background: var(--latar);
+  color: var(--teks);
+  line-height: 1.5;
+  padding-bottom: 220px; /* ruang untuk ringkasan sticky di ponsel */
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+.situs-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ruang);
+  padding: var(--ruang);
+  background: var(--permukaan);
+  border-bottom: 1px solid var(--batas);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--aksen);
+  text-decoration: none;
+}
+
+#menu-utama { flex: 1; }
+
+#menu-utama ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--ruang);
+}
+
+#menu-utama a {
+  color: var(--teks);
+  text-decoration: none;
+  padding: var(--ruang-kecil);
+  border-radius: var(--ruang-kecil);
+}
+
+#menu-utama a[aria-current="page"] {
+  color: var(--aksen);
+  font-weight: 600;
+}
+
+#menu-utama a:hover { background: var(--latar); }
+
+.tombol-menu {
+  display: none;
+  font: inherit;
+  padding: var(--ruang-kecil) var(--ruang);
+  border: 1px solid var(--batas);
+  border-radius: var(--ruang-kecil);
+  background: var(--permukaan);
+  cursor: pointer;
+}
+
+/* ==========================================================
+   MAIN
+   ========================================================== */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--ruang-besar) var(--ruang);
+  display: grid;
+  gap: var(--ruang-besar);
+}
+
+section {
+  background: var(--permukaan);
+  border: 1px solid var(--batas);
+  border-radius: var(--radius);
+  padding: var(--ruang);
+}
+
+section h1,
+section h2 { margin-top: 0; }
+
+/* ==========================================================
+   KARTU JASTIPER
+   ========================================================== */
+.kartu-jastiper {
+  display: flex;
+  gap: var(--ruang);
+  align-items: center;
+  padding: var(--ruang);
+  background: var(--latar);
+  border: 1px solid var(--batas);
+  border-radius: var(--radius);
+}
+
+.avatar {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--aksen);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.info h2 {
+  margin: 0 0 var(--ruang-kecil);
+  font-size: 1.1rem;
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--teks-lembut);
+}
+
+.rating { color: #b45309; font-weight: 600; }
+.online { color: var(--sukses); font-weight: 600; }
+
+.biaya { margin: var(--ruang-kecil) 0 0; }
+
+/* ==========================================================
+   FORM & TOMBOL
+   ========================================================== */
+button {
+  font: inherit;
+  cursor: pointer;
+  padding: var(--ruang-kecil) var(--ruang);
+  border: 1px solid var(--batas);
+  border-radius: var(--ruang-kecil);
+  background: var(--permukaan);
+  color: var(--teks);
+}
+
+button:hover { border-color: var(--aksen); }
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 3px solid var(--aksen);
+  outline-offset: 2px;
+}
+
+.tombol-utama {
+  background: var(--aksen);
+  border-color: var(--aksen);
+  color: #fff;
+  width: 100%;
+  padding: var(--ruang);
+}
+
+.tombol-utama:hover { background: var(--aksen-gelap); }
+
+.bidang { margin-bottom: var(--ruang); }
+
+.bidang label {
+  display: block;
+  margin-bottom: var(--ruang-kecil);
+  font-weight: 600;
+}
+
+.opsional {
+  font-weight: 400;
+  color: var(--teks-lembut);
+  font-size: 0.9rem;
+}
+
+.bidang input,
+.bidang textarea {
+  width: 100%;
+  font: inherit;
+  padding: var(--ruang-kecil);
+  border: 1px solid var(--batas);
+  border-radius: var(--ruang-kecil);
+  background: var(--permukaan);
+  resize: vertical;
+}
+
+.bidang [aria-invalid="true"] {
+  border-color: var(--galat);
+}
+
+.galat {
+  margin: var(--ruang-kecil) 0 0;
+  min-height: 1.25em;
+  color: var(--galat);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================
+   RINGKASAN BIAYA (sticky di ponsel)
+   ========================================================== */
+.ringkasan {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--permukaan);
+  border-top: 1px solid var(--batas);
+  padding: var(--ruang);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+  z-index: 20;
+}
+
+.daftar-biaya {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ruang-kecil);
+  margin: 0 0 var(--ruang);
+}
+
+.daftar-biaya > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.daftar-biaya dt { color: var(--teks-lembut); }
+.daftar-biaya dd { margin: 0; font-weight: 600; }
+
+.daftar-biaya .total {
+  padding-top: var(--ruang-kecil);
+  border-top: 1px solid var(--batas);
+  font-size: 1.1rem;
+}
+
+.daftar-biaya .total dt { color: var(--teks); font-weight: 700; }
+.daftar-biaya .total dd { color: var(--aksen); }
+
+#pesan {
+  margin: var(--ruang-kecil) 0 0;
+  min-height: 1.25em;
+  color: var(--sukses);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ==========================================================
+   DIALOG
+   ========================================================== */
+dialog {
+  border: none;
+  border-radius: var(--radius);
+  padding: var(--ruang-besar);
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
+
+dialog h2 { margin-top: 0; }
+
+.aksi-dialog {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ruang-kecil);
+  margin-top: var(--ruang);
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.situs-footer {
+  text-align: center;
+  padding: var(--ruang-besar) var(--ruang);
+  color: var(--teks-lembut);
+  font-size: 0.9rem;
+  background: var(--permukaan);
+  border-top: 1px solid var(--batas);
+}
+
+.situs-footer a { color: var(--aksen); }
+
+/* ==========================================================
+   UTILITAS
+   ========================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==========================================================
+   PONSEL (≤ 640px)
+   ========================================================== */
+@media (max-width: 640px) {
+  .tombol-menu { display: inline-block; }
+
+  #menu-utama {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  #menu-utama[hidden] { display: none; }
+
+  #menu-utama ul {
+    flex-direction: column;
+    gap: var(--ruang-kecil);
+  }
+}
+
+/* ==========================================================
+   DESKTOP (≥ 900px): ringkasan jadi kolom kanan
+   ========================================================== */
+@media (min-width: 900px) {
+  body { padding-bottom: 0; }
+
+  main {
+    max-width: 1200px;
+    grid-template-columns: 1fr 340px;
+    align-items: start;
+    padding-bottom: var(--ruang-besar);
+  }
+
+  main > section { grid-column: 1; }
+
+  .ringkasan {
+    position: sticky;
+    top: 80px;
+    grid-column: 2;
+    margin: 0 var(--ruang) var(--ruang-besar) 0;
+    border: 1px solid var(--batas);
+    border-radius: var(--radius);
+    box-shadow: none;
+  }
+}

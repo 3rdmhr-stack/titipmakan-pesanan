@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Form pesanan TitipMakan — titip makanan ke jastiper terpercaya.">
+  <title>Buat Pesanan — TitipMakan</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       KOMPONEN 1 — HEADER dengan menu ponsel (disclosure)
+       ============================================================ -->
+  <header class="situs-header">
+    <a href="#" class="logo" aria-label="TitipMakan beranda">TitipMakan</a>
+
+    <button id="tombol-menu" type="button" class="tombol-menu"
+            aria-expanded="false" aria-controls="menu-utama">
+      <span class="sr-only">Buka menu navigasi</span>
+      <span aria-hidden="true">☰</span>
+    </button>
+
+    <nav id="menu-utama" aria-label="Menu utama">
+      <ul>
+        <li><a href="#" aria-current="page">Pesan</a></li>
+        <li><a href="#">Pesanan Saya</a></li>
+        <li><a href="#">Akun</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         KOMPONEN 2 — KARTU JASTIPER
+         Info jastiper yang dipilih (dari wireframe Detail Jastiper).
+         data-biaya-titip dipakai JS untuk ringkasan biaya.
+         ============================================================ -->
+    <section id="jastiper" aria-labelledby="judul-jastiper">
+      <h1 id="judul-jastiper">Buat pesanan</h1>
+
+      <article class="kartu-jastiper" data-biaya-titip="5000">
+        <div class="avatar" aria-hidden="true">R</div>
+        <div class="info">
+          <h2>Rina</h2>
+          <p class="meta">
+            <span class="rating" aria-label="Rating 4,8 dari 5">★ 4,8</span>
+            <span>· 128 ulasan</span>
+            <span>· <span class="online">● Online</span></span>
+          </p>
+          <p class="biaya">Biaya titip: <strong>Rp5.000</strong></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============================================================
+         KOMPONEN 3 — FORM PESANAN dengan validasi aksesibel
+         ============================================================ -->
+    <section aria-labelledby="judul-form">
+      <h2 id="judul-form">Detail pesanan</h2>
+
+      <form id="form-pesanan" novalidate>
+        <div class="bidang">
+          <label for="menu">Menu yang dipesan</label>
+          <input id="menu" name="menu" type="text" required
+                 placeholder="mis. Nasi Ayam Geprek"
+                 aria-describedby="galat-menu">
+          <p id="galat-menu" class="galat" role="alert"></p>
+        </div>
+
+        <div class="bidang">
+          <label for="harga">Harga menu (Rp)</label>
+          <input id="harga" name="harga" type="number" required min="1" step="100"
+                 placeholder="mis. 18000"
+                 aria-describedby="galat-harga">
+          <p id="galat-harga" class="galat" role="alert"></p>
+        </div>
+
+        <div class="bidang">
+          <label for="resto">Resto asal</label>
+          <input id="resto" name="resto" type="text" required
+                 placeholder="mis. Warung Bu Tini"
+                 aria-describedby="galat-resto">
+          <p id="galat-resto" class="galat" role="alert"></p>
+        </div>
+
+        <div class="bidang">
+          <label for="titik-ambil">Titik ambil</label>
+          <input id="titik-ambil" name="titik-ambil" type="text" required
+                 placeholder="mis. Gedung A — Lobby Utama"
+                 aria-describedby="galat-titik">
+          <p id="galat-titik" class="galat" role="alert"></p>
+        </div>
+
+        <div class="bidang">
+          <label for="catatan">Catatan <span class="opsional">(opsional)</span></label>
+          <textarea id="catatan" name="catatan" rows="3"
+                    placeholder="mis. tanpa sambal, tambah kerupuk"></textarea>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       KOMPONEN 4 — RINGKASAN BIAYA + TOMBOL STATUS MEMUAT
+       ============================================================ -->
+  <aside class="ringkasan" aria-labelledby="judul-ringkasan">
+    <h2 id="judul-ringkasan" class="sr-only">Ringkasan biaya</h2>
+
+    <dl class="daftar-biaya">
+      <div><dt>Subtotal</dt><dd id="ringkasan-subtotal">Rp0</dd></div>
+      <div><dt>Biaya titip</dt><dd id="ringkasan-titip">Rp5.000</dd></div>
+      <div class="total"><dt>Total</dt><dd id="ringkasan-total">Rp5.000</dd></div>
+    </dl>
+
+    <button id="tombol-lanjut" type="submit" form="form-pesanan" class="tombol-utama">
+      Lanjut ke pembayaran
+    </button>
+
+    <p id="pesan" role="status"></p>
+  </aside>
+
+  <!-- ============================================================
+       KOMPONEN 5 — DIALOG KONFIRMASI
+       ============================================================ -->
+  <dialog id="dialog-konfirmasi" aria-labelledby="judul-konfirmasi">
+    <h2 id="judul-konfirmasi">Lanjut ke pembayaran?</h2>
+    <p id="ringkas-dialog"></p>
+    <div class="aksi-dialog">
+      <button id="tidak" type="button">Periksa lagi</button>
+      <button id="ya" type="button" class="tombol-utama">Ya, lanjutkan</button>
+    </div>
+  </dialog>
+
+  <!-- FOOTER -->
+  <footer class="situs-footer">
+    <p>© 2026 TitipMakan — Titip makanan, hemat waktu.</p>
+    <p><a href="#">Bantuan</a> · <a href="#">Kebijakan privasi</a></p>
+  </footer>
+
+</body>
+</html>
